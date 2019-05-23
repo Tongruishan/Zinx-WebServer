@@ -1,6 +1,9 @@
 package ziface
 
-import "net"
+import (
+	"net"
+	//"ZinxHouse/Zinx-WebServer/zinx/net"
+)
 
 /*
 	抽象层
@@ -23,10 +26,10 @@ type IConnection interface {
 	GetRemoteAddr()net.Addr
 
 	//发送消息
-	Send(data []byte)error
+	Send(data []byte,n int)error
 
 
 }
 
 //业务处理的抽象方法
-type HandleFunc func(*net.TCPConn,[]byte,int) error
+type HandleFunc func(request IRequest) error

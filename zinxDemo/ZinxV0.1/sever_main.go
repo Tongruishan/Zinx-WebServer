@@ -1,6 +1,9 @@
 package main
 
-import "ZinxHouse/zinx/net"
+//import "ZinxHouse/Zinx-WebServer/zinx/net"
+//
+
+import "ZinxHouse/Zinx-WebServer/zinx/net"
 
 func main(){
 	//创建服务器对象
