@@ -15,18 +15,18 @@ type Connection struct {
 	//判断是否关闭
 	IsClose bool
 	//绑定业务，回调函数
-	HandleAPI ziface.HandleFunc
+	Addrouter ziface.IRouter
 
 }
 
 //初始化对象，相当于构造函数
-func NewConnection(conn *net.TCPConn,connId uint32,CallBackFunc ziface.HandleFunc)ziface.IConnection{
+func NewConnection(conn *net.TCPConn,connId uint32,router ziface.IRouter)ziface.IConnection{
 
 	c:=&Connection{
 		Conn:conn,
 		ConnID:connId,
 		IsClose:false,
-		HandleAPI:CallBackFunc,
+		Addrouter:router,
 
 	}
 	return c
@@ -53,11 +53,18 @@ func(c *Connection)StartReader(){
 		req:=NewRequest(c,buf,n)
 
 		//传给回调函数，调用业务
-		err=c.HandleAPI(req)
-		if err!=nil{
-			fmt.Println("StartReader HandleAPI err",err)
-			break
-		}
+		go func() {
+			c.Addrouter.PreHandle(req)
+			c.Addrouter.Handle(req)
+			c.Addrouter.PostHandle(req)
+		}()
+
+
+		//err=c.HandleAPI(req)
+		//if err!=nil{
+		//	fmt.Println("StartReader HandleAPI err",err)
+		//	break
+		//}
 
 	}
 

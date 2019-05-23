@@ -12,18 +12,20 @@ type Sever struct{
 	Ip string
 	Port int
 	Name string
+	Addrouter ziface.IRouter
 }
 
 //对象初始化
-func NewSever(name string)  ziface.ISever {
+func NewSever(name string) ziface.ISever {
 
-	S:= Sever{
+	S:= &Sever{
 		Name:name,
 		IpVersion:"tcp4",
 		Ip:"0.0.0.0",
 		Port:8999,
+		Addrouter:nil,
 	}
-	return &S
+	return S
 
 }
 
@@ -75,8 +77,10 @@ func(this *Sever)Start(){
 				continue
 			}
 			//调用链接模块
-			delConn:=NewConnection(conn,cid,CallBackBusi)
+			//delConn:=NewConnection(conn,cid,CallBackBusi)
+			delConn:=NewConnection(conn,cid,this.Addrouter)
 			cid++
+
 
 			//链接模块的开始链接方法
 			go delConn.Start()
@@ -103,4 +107,9 @@ func(this *Sever)Sever(){
 	select {
 
 	}
+}
+
+//路由
+func(this *Sever)AddRouter(router ziface.IRouter){
+	this.Addrouter=router
 }

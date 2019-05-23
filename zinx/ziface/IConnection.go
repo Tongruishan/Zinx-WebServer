@@ -28,6 +28,8 @@ type IConnection interface {
 	//发送消息
 	Send(data []byte,n int)error
 
+	//router
+	//Router IRouter
 
 }
 

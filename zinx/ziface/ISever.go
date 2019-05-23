@@ -5,6 +5,7 @@ type ISever interface {
 	Start()
 	Stop()
 	Sever()
+	AddRouter(router IRouter)
 }
 
 
