@@ -4,6 +4,9 @@ import (
 	"net"
 	"ZinxHouse/Zinx-WebServer/zinx/ziface"
 	"fmt"
+	//"ZinxHouse/Zinx-WebServer/zinx/config"
+	"io"
+	"errors"
 )
 
 //具体的TCP链接模块
@@ -42,15 +45,39 @@ func(c *Connection)StartReader(){
 
 	//读取
 	for {
-		//读取信息
-		buf := make([]byte,512)
-		n,err:=c.Conn.Read(buf)
+		//读取数据，所有数据都经过封装，所以需要创建封装体
+		//创建封装结构体
+		dp:=NewDataPack()
+		//读数据需要先创建缓冲区存储数据，现在缓冲区只存储信息头
+		headbuf := make([]byte,dp.GetHeadLen())
+		//从数据流中读取信息，写入缓冲区中
+		_,err:=io.ReadFull(c.Conn,headbuf)
 		if err!=nil{
-			fmt.Println("StartReader Read err",err)
-			continue
+			fmt.Println("StartReader headbuf  ReadFull err",err)
+			return
 		}
-		//创建request对象
-		req:=NewRequest(c,buf,n)
+		//将缓冲区已有的数据解封装，获取数据id和数据长度
+		headdata,err:=dp.MsgUnPack(headbuf)
+		if err!=nil{
+			fmt.Println("StartReader MsgUnPack err",err)
+			break
+		}
+		//将数据头的接口强转为Message结构体
+		data:=headdata.(*Message)
+		//为数据段开辟空间
+		data.MsgData=make([]byte,data.MsgLen)
+		//判断数据头长度，大于0时，读取文件内容
+		if headdata.GetMsgLen()>0{
+			//从流中读取数据内容
+			_,err=io.ReadFull(c.Conn,data.MsgData)
+			if err!=nil{
+				fmt.Println("StartReader MsgData ReadFull err:",err)
+				break
+			}
+		}
+
+		//创建回复结构体
+		req:=NewRequest(c,data)
 
 		//传给回调函数，调用业务
 		go func() {
@@ -59,16 +86,8 @@ func(c *Connection)StartReader(){
 			c.Addrouter.PostHandle(req)
 		}()
 
-
-		//err=c.HandleAPI(req)
-		//if err!=nil{
-		//	fmt.Println("StartReader HandleAPI err",err)
-		//	break
-		//}
-
 	}
 
-	//传给谁
 
 }
 
@@ -116,15 +135,30 @@ func(c *Connection)GetRemoteAddr()net.Addr{
 }
 
 //发送消息
-func(c *Connection)Send(data []byte,n int)error{
+func(c *Connection)Send(msgId uint32,msgData []byte)error{
 
 	fmt.Println("Conn Send is working ...")
+	//判断链接状态
+	if c.IsClose==true{
+		return errors.New("conn is closed!!!")
+	}
 
-	_,err:=c.Conn.Write(data[:n])
+	//读取数据，所有数据都经过封装，所以需要创建封装体
+	//创建封装结构体
+	dp:=NewDataPack()
+	//将发送的内容封装
+	datapack,err:=dp.MsgPack(NewMesg(msgId,msgData))
 	if err!=nil{
-		fmt.Print("Conn.Write err",err)
+		fmt.Println("Send MsgPack err",err)
 		return err
 	}
+	//将封装的内容（二进制）写给对端
+	_,err=c.Conn.Write(datapack)
+	if err!=nil{
+		fmt.Println("Send Write err",err)
+		return err
+	}
+	//
 	return nil
 
 }

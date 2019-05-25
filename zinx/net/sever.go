@@ -4,6 +4,7 @@ import (
 	"ZinxHouse/Zinx-WebServer/zinx/ziface"
 	"net"
 	"fmt"
+	"ZinxHouse/Zinx-WebServer/zinx/config"
 )
 
 //创建对象
@@ -19,10 +20,10 @@ type Sever struct{
 func NewSever(name string) ziface.ISever {
 
 	S:= &Sever{
-		Name:name,
+		Name:config.GlobleConf.Name,
 		IpVersion:"tcp4",
-		Ip:"0.0.0.0",
-		Port:8999,
+		Ip:config.GlobleConf.Host,
+		Port:config.GlobleConf.Port,
 		Addrouter:nil,
 	}
 	return S
@@ -30,24 +31,24 @@ func NewSever(name string) ziface.ISever {
 }
 
 
-//回调函数
-func CallBackBusi(request ziface.IRequest)error{
-	fmt.Println("CallBackBusi is working")
-
-	conn:=request.GetConn().GetTCPConnection()
-	data:=request.GetData()
-	n:=request.GetLen()
-
-
-	_,err:=conn.Write(data[:n])
-	if err!=nil{
-		fmt.Println("CallBackBusi Write err",err)
-		return err
-	}
-
-	return nil
-
-}
+////回调函数
+//func CallBackBusi(request ziface.IRequest)error{
+//	fmt.Println("CallBackBusi is working")
+//
+//	conn:=request.GetConn().GetTCPConnection()
+//	data:=request.GetData()
+//	n:=request.GetLen()
+//
+//
+//	_,err:=conn.Write(data[:n])
+//	if err!=nil{
+//		fmt.Println("CallBackBusi Write err",err)
+//		return err
+//	}
+//
+//	return nil
+//
+//}en
 
 //对象方法
 //停止服务
@@ -88,9 +89,6 @@ func(this *Sever)Start(){
 		}
 	}()
 
-
-
-
 }
 
 //开始服务
@@ -103,13 +101,13 @@ func(this *Sever)Sever(){
 	//调用start
 	this.Start()
 
-	//TODO 其他的事
+	//TODO 其他的事,防止主go程推出
 	select {
 
 	}
 }
 
-//路由
+//路由，将sever对象自己的属性和对象的路由建立链接，非常中国要
 func(this *Sever)AddRouter(router ziface.IRouter){
 	this.Addrouter=router
 }

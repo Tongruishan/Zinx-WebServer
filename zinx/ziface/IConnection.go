@@ -26,7 +26,7 @@ type IConnection interface {
 	GetRemoteAddr()net.Addr
 
 	//发送消息
-	Send(data []byte,n int)error
+	Send(msgId uint32,msgData []byte)error
 
 	//router
 	//Router IRouter

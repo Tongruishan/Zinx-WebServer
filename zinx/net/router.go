@@ -6,7 +6,7 @@ type BaseRouter struct {
 
 }
 
-
+//目的，实例化对象
 func(br *BaseRouter) PreHandle(request ziface.IRequest){
 
 }

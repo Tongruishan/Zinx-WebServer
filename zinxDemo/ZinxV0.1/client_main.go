@@ -4,6 +4,8 @@ import (
 	"net"
 	"fmt"
 	"time"
+	net2 "ZinxHouse/Zinx-WebServer/zinx/net"
+	"io"
 )
 
 func main(){
@@ -20,19 +22,46 @@ func main(){
 
 	for{
 
-		_,err=conn.Write([]byte("hello zinx ...."))
+		//向客户端发送的消息
+		dp:=net2.NewDataPack()
+		data,err:=dp.MsgPack(net2.NewMesg(0,[]byte("hello zinx")))
 		if err!=nil{
-			fmt.Println("Write err:",err)
+			fmt.Println("MsgPack err",err)
+			return
+		}
+		_,err=conn.Write(data)
+		if err!=nil{
+			fmt.Println("Write err",err)
 			return
 		}
 
-		buf:=make([]byte,512)
-		n,err:=conn.Read(buf)
+		//接受客户端发送的消息
+
+		databuf:=make([]byte,dp.GetHeadLen())
+		_,err=io.ReadFull(conn,databuf)
 		if err!=nil{
-			fmt.Println("Read err:",err)
+			fmt.Println("ReadFull err",err)
 			return
 		}
-		fmt.Printf("sever call back %s,%d\n",buf,n)
+
+		dataHead,err:=dp.MsgUnPack(databuf)
+		if err!=nil{
+			fmt.Println("MsgUnPack err",err)
+			return
+		}
+
+		if dataHead.GetMsgLen()>0{
+			msg:=dataHead.(*net2.Message)
+			msg.MsgData=make([]byte,msg.MsgLen)
+
+			_,err=io.ReadFull(conn,msg.MsgData)
+			if err!=nil{
+				fmt.Println("MsgUnPack ReadFull err",err)
+				return
+			}
+
+			fmt.Println("sever call msgId=",msg.MsgId,"msgLen=",msg.MsgLen,"msgData=",string(msg.MsgData))
+		}
 
 		time.Sleep(time.Second)
 	}

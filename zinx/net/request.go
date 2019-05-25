@@ -4,17 +4,15 @@ import "ZinxHouse/Zinx-WebServer/zinx/ziface"
 
 type Request struct {
 	conn ziface.IConnection
-	data []byte
-	len int
+	msg ziface.IMessage
 }
 
 //初始话对象
-func NewRequest(conn ziface.IConnection,data []byte,len int)*Request{
+func NewRequest(conn ziface.IConnection,msg ziface.IMessage)*Request{
 
 	res:=&Request{
 		conn:conn,
-		data:data,
-		len:len,
+		msg:msg,
 	}
 
 	return res
@@ -30,14 +28,9 @@ func(r *Request)GetConn() ziface.IConnection{
 
 }
 //获取数据
-func(r *Request)GetData()[]byte{
+func(r *Request)GetMsg()ziface.IMessage{
 
-	return r.data
-
-}
-//获取数据长度
-func(r *Request)GetLen()int{
-
-	return r.len
+	return r.msg
 
 }
+
