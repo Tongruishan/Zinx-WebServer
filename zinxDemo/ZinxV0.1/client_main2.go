@@ -24,7 +24,7 @@ func main(){
 
 		//向客户端发送的消息
 		dp:=net2.NewDataPack()
-		data,err:=dp.MsgPack(net2.NewMesg(1,[]byte("hello zinx")))
+		data,err:=dp.MsgPack(net2.NewMesg(2,[]byte("hello heimaya !!!!")))
 		if err!=nil{
 			fmt.Println("MsgPack err",err)
 			return

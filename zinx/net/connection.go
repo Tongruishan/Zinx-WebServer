@@ -18,18 +18,19 @@ type Connection struct {
 	//判断是否关闭
 	IsClose bool
 	//绑定业务，回调函数
-	Addrouter ziface.IRouter
+	//Addrouter ziface.IRouter
 
+	MsgHandler ziface.IMsgHandler
 }
 
 //初始化对象，相当于构造函数
-func NewConnection(conn *net.TCPConn,connId uint32,router ziface.IRouter)ziface.IConnection{
+func NewConnection(conn *net.TCPConn,connId uint32,msgHandler ziface.IMsgHandler)ziface.IConnection{
 
 	c:=&Connection{
 		Conn:conn,
 		ConnID:connId,
 		IsClose:false,
-		Addrouter:router,
+		MsgHandler:msgHandler,
 
 	}
 	return c
@@ -80,11 +81,8 @@ func(c *Connection)StartReader(){
 		req:=NewRequest(c,data)
 
 		//传给回调函数，调用业务
-		go func() {
-			c.Addrouter.PreHandle(req)
-			c.Addrouter.Handle(req)
-			c.Addrouter.PostHandle(req)
-		}()
+		go c.MsgHandler.DoMsgHandler(req)
+
 
 	}
 

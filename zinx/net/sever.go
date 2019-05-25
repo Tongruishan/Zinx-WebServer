@@ -13,7 +13,7 @@ type Sever struct{
 	Ip string
 	Port int
 	Name string
-	Addrouter ziface.IRouter
+	MsgHandler ziface.IMsgHandler
 }
 
 //对象初始化
@@ -24,31 +24,12 @@ func NewSever(name string) ziface.ISever {
 		IpVersion:"tcp4",
 		Ip:config.GlobleConf.Host,
 		Port:config.GlobleConf.Port,
-		Addrouter:nil,
+		MsgHandler:NewMsgHandler(),
 	}
 	return S
 
 }
 
-
-////回调函数
-//func CallBackBusi(request ziface.IRequest)error{
-//	fmt.Println("CallBackBusi is working")
-//
-//	conn:=request.GetConn().GetTCPConnection()
-//	data:=request.GetData()
-//	n:=request.GetLen()
-//
-//
-//	_,err:=conn.Write(data[:n])
-//	if err!=nil{
-//		fmt.Println("CallBackBusi Write err",err)
-//		return err
-//	}
-//
-//	return nil
-//
-//}en
 
 //对象方法
 //停止服务
@@ -79,8 +60,10 @@ func(this *Sever)Start(){
 			}
 			//调用链接模块
 			//delConn:=NewConnection(conn,cid,CallBackBusi)
-			delConn:=NewConnection(conn,cid,this.Addrouter)
+			//delConn:=NewConnection(conn,cid,this.Addrouter)
+			delConn:=NewConnection(conn,cid,this.MsgHandler)
 			cid++
+
 
 
 			//链接模块的开始链接方法
@@ -108,6 +91,10 @@ func(this *Sever)Sever(){
 }
 
 //路由，将sever对象自己的属性和对象的路由建立链接，非常中国要
-func(this *Sever)AddRouter(router ziface.IRouter){
-	this.Addrouter=router
+func(this *Sever)AddRouter(msgId uint32,router ziface.IRouter){
+	this.MsgHandler.AddMsgRouter(msgId,router)
+
+	fmt.Println("msgId=",msgId,"router",router,"has been apeend")
+
+
 }
