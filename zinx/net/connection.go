@@ -4,7 +4,6 @@ import (
 	"net"
 	"ZinxHouse/Zinx-WebServer/zinx/ziface"
 	"fmt"
-	//"ZinxHouse/Zinx-WebServer/zinx/config"
 	"io"
 	"errors"
 	"ZinxHouse/Zinx-WebServer/zinx/config"
@@ -12,6 +11,8 @@ import (
 
 //具体的TCP链接模块
 type Connection struct {
+
+	sever ziface.ISever
 	//获取链接socket
 	Conn *net.TCPConn
 	//获取链接Id
@@ -27,9 +28,10 @@ type Connection struct {
 }
 
 //初始化对象，相当于构造函数
-func NewConnection(conn *net.TCPConn,connId uint32,msgHandler ziface.IMsgHandler)ziface.IConnection{
+func NewConnection(s ziface.ISever,conn *net.TCPConn,connId uint32,msgHandler ziface.IMsgHandler)ziface.IConnection{
 
 	c:=&Connection{
+		sever:s,
 		Conn:conn,
 		ConnID:connId,
 		IsClose:false,
@@ -38,6 +40,9 @@ func NewConnection(conn *net.TCPConn,connId uint32,msgHandler ziface.IMsgHandler
 		wirterQuitChan:make(chan bool),
 
 	}
+
+	c.sever.GetConnMsg().Add(c)
+
 	return c
 
 }
@@ -82,7 +87,7 @@ func(c *Connection)StartReader(){
 			}
 		}
 
-		fmt.Println("clinet Id=",c.ConnID,"dataId=",data.MsgId,"datal=",string(data.GetMsgData() ))
+		fmt.Println("revied clinet msg: ConnId=",c.ConnID,"dataId=",data.MsgId,"datal=",string(data.GetMsgData() ))
 
 		//创建回复结构体
 		req:=NewRequest(c,data)
@@ -106,7 +111,7 @@ func(c *Connection)StartReader(){
 
 func(c *Connection)StartWriter(){
 
-	fmt.Println("Writer is Start")
+	fmt.Println("StartWriter is working")
 
 	defer fmt.Println("[Writer is quit ]ConnID:",c.ConnID,"remote ID is ;",c.GetRemoteAddr().String())
 
@@ -132,8 +137,11 @@ func(c *Connection)Start(){
 	//读取业务
 	go c.StartReader()
 
-	//TODO 写入业务
+	//写入业务
 	go c.StartWriter()
+
+	//链接之后调用钩子函数
+	c.sever.CallOnConnStart(c)
 
 }
 
@@ -141,7 +149,8 @@ func(c *Connection)Start(){
 func(c *Connection)Stop(){
 
 	fmt.Println("c.Stop is working ...")
-
+	//调用钩子函数
+	c.sever.CallOnConnStop(c)
 	if c.IsClose==true{
 		return
 	}
@@ -155,6 +164,8 @@ func(c *Connection)Stop(){
 		fmt.Println("c.close err",err)
 		return
 	}
+	//删除链接
+	c.sever.GetConnMsg().Remove(c.ConnID)
 
 	//c.Conn.Close(c.wirterQuitChan)
 	close(c.wirterQuitChan)
@@ -197,12 +208,7 @@ func(c *Connection)Send(msgId uint32,msgData []byte)error{
 		fmt.Println("Send MsgPack err",err)
 		return err
 	}
-	//将封装的内容（二进制）写给对端
-	//_,err=c.Conn.Write(datapack)
-	//if err!=nil{
-	//	fmt.Println("Send Write err",err)
-	//	return err
-	//}
+
 	c.msgChan<-datapack
 	//
 	return nil

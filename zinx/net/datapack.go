@@ -24,6 +24,8 @@ func(dp *DataPack) GetHeadLen()uint32{
 //包装
 func(dp *DataPack) MsgPack(msg ziface.IMessage)([]byte,error){
 
+	fmt.Println("Msg is Packing now")
+
 	//创建新的缓冲区
 	databuffer:=bytes.NewBuffer([]byte{})
 
@@ -55,6 +57,8 @@ func(dp *DataPack) MsgPack(msg ziface.IMessage)([]byte,error){
 
 //解装
 func(dp *DataPack) MsgUnPack(data []byte)(ziface.IMessage,error){
+
+	fmt.Println("Msg is UnPacking now")
 
 	msgHead:=&Message{}
 

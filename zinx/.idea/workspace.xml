@@ -11,54 +11,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="IConnection.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ziface/IConnection.go">
+      <file leaf-file-name="ISever.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ziface/ISever.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="12" lean-forward="false" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+            <state relative-caret-position="216">
+              <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IDataPack.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ziface/IDataPack.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IMsgHandler.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ziface/IMsgHandler.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="10" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="connection.go" pinned="false" current-in-tab="false">
+      <file leaf-file-name="connection.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/net/connection.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="92" column="49" lean-forward="true" selection-start-line="92" selection-start-column="49" selection-end-line="92" selection-end-column="49" />
+            <state relative-caret-position="315">
+              <caret line="89" column="44" lean-forward="false" selection-start-line="89" selection-start-column="44" selection-end-line="89" selection-end-column="44" />
               <folding>
-                <element signature="e#13#175#0" expanded="true" />
+                <element signature="e#13#133#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="message.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/net/message.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="2" column="10" lean-forward="false" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="10" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -66,8 +36,8 @@
       <file leaf-file-name="msghandler.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/net/msghandler.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1404">
-              <caret line="96" column="33" lean-forward="false" selection-start-line="96" selection-start-column="33" selection-end-line="96" selection-end-column="33" />
+            <state relative-caret-position="-72">
+              <caret line="71" column="63" lean-forward="false" selection-start-line="71" selection-start-column="63" selection-end-line="71" selection-end-column="63" />
               <folding>
                 <element signature="n#!!block;n#DoMsgHandler#0" expanded="false" />
               </folding>
@@ -75,11 +45,43 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="request.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/net/request.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="371">
+              <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/config.go">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="756">
+              <caret line="46" column="21" lean-forward="false" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="connmanager.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/net/connmanager.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-450">
+              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <folding>
+                <element signature="e#13#88#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="router.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/net/router.go">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="324">
-              <caret line="43" column="8" lean-forward="false" selection-start-line="43" selection-start-column="8" selection-end-line="44" selection-end-column="30" />
+              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -88,18 +90,8 @@
       <file leaf-file-name="sever.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/net/sever.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="37" column="35" lean-forward="false" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="datapack_test.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/net/datapack_test.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="79" column="0" lean-forward="true" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+            <state relative-caret-position="1404">
+              <caret line="113" column="46" lean-forward="false" selection-start-line="113" selection-start-column="46" selection-end-line="113" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -108,8 +100,18 @@
       <file leaf-file-name="datapack.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/net/datapack.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-414">
-              <caret line="9" column="5" lean-forward="false" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+            <state relative-caret-position="-31">
+              <caret line="55" column="1" lean-forward="true" selection-start-line="55" selection-start-column="1" selection-end-line="55" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="message.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/net/message.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-306">
+              <caret line="2" column="10" lean-forward="false" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -132,18 +134,20 @@
         <option value="$PROJECT_DIR$/net/router.go" />
         <option value="$PROJECT_DIR$/ziface/IMessage.go" />
         <option value="$PROJECT_DIR$/ziface/IDataPack.go" />
-        <option value="$PROJECT_DIR$/net/datapack.go" />
         <option value="$PROJECT_DIR$/net/datapack_test.go" />
         <option value="$PROJECT_DIR$/ziface/IRequest.go" />
         <option value="$PROJECT_DIR$/net/request.go" />
         <option value="$PROJECT_DIR$/net/message.go" />
         <option value="$PROJECT_DIR$/ziface/IMsgHandle.go" />
-        <option value="$PROJECT_DIR$/ziface/ISever.go" />
         <option value="$PROJECT_DIR$/ziface/IConnection.go" />
         <option value="$PROJECT_DIR$/ziface/IMsgHandler.go" />
+        <option value="$PROJECT_DIR$/ziface/IConnManager.go" />
+        <option value="$PROJECT_DIR$/net/connmanager.go" />
         <option value="$PROJECT_DIR$/config/config.go" />
-        <option value="$PROJECT_DIR$/net/msghandler.go" />
+        <option value="$PROJECT_DIR$/ziface/ISever.go" />
         <option value="$PROJECT_DIR$/net/sever.go" />
+        <option value="$PROJECT_DIR$/net/datapack.go" />
+        <option value="$PROJECT_DIR$/net/msghandler.go" />
         <option value="$PROJECT_DIR$/net/connection.go" />
       </list>
     </option>
@@ -266,27 +270,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="9" />
+      <option name="time" value="10" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ziface/IRequest.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/net/sever.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1404">
-          <caret line="89" column="7" lean-forward="false" selection-start-line="89" selection-start-column="7" selection-end-line="89" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ziface/IConnection.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="486">
@@ -330,7 +318,7 @@
         <state relative-caret-position="360">
           <caret line="36" column="13" lean-forward="true" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
           <folding>
-            <element signature="e#13#175#0" expanded="true" />
+            <element signature="e#13#133#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -395,7 +383,7 @@
         <state relative-caret-position="972">
           <caret line="54" column="21" lean-forward="true" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="21" />
           <folding>
-            <element signature="e#13#175#0" expanded="true" />
+            <element signature="e#13#133#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -421,7 +409,7 @@
         <state relative-caret-position="882">
           <caret line="53" column="0" lean-forward="true" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
           <folding>
-            <element signature="e#13#175#0" expanded="true" />
+            <element signature="e#13#133#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -470,7 +458,7 @@
         <state relative-caret-position="36">
           <caret line="5" column="1" lean-forward="true" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
           <folding>
-            <element signature="e#13#175#0" expanded="true" />
+            <element signature="e#13#133#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -547,21 +535,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/net/request.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/net/router.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ziface/IMessage.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -586,14 +559,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ziface/ISever.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ziface/IDataPack.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -606,22 +571,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="12" lean-forward="false" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/net/message.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="2" column="10" lean-forward="false" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/net/datapack.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-414">
-          <caret line="9" column="5" lean-forward="false" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -642,39 +591,97 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ziface/IConnManager.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="7" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="46" column="21" lean-forward="false" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ziface/ISever.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/net/connmanager.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-450">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <element signature="e#13#88#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/net/datapack.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-31">
+          <caret line="55" column="1" lean-forward="true" selection-start-line="55" selection-start-column="1" selection-end-line="55" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/net/message.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-306">
+          <caret line="2" column="10" lean-forward="false" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/net/msghandler.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1404">
-          <caret line="96" column="33" lean-forward="false" selection-start-line="96" selection-start-column="33" selection-end-line="96" selection-end-column="33" />
+        <state relative-caret-position="-72">
+          <caret line="71" column="63" lean-forward="false" selection-start-line="71" selection-start-column="63" selection-end-line="71" selection-end-column="63" />
           <folding>
             <element signature="n#!!block;n#DoMsgHandler#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/net/request.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/net/router.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/net/sever.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="37" column="35" lean-forward="false" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="35" />
+        <state relative-caret-position="1404">
+          <caret line="113" column="46" lean-forward="false" selection-start-line="113" selection-start-column="46" selection-end-line="113" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/net/connection.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="92" column="49" lean-forward="true" selection-start-line="92" selection-start-column="49" selection-end-line="92" selection-end-column="49" />
+        <state relative-caret-position="315">
+          <caret line="89" column="44" lean-forward="false" selection-start-line="89" selection-start-column="44" selection-end-line="89" selection-end-column="44" />
           <folding>
-            <element signature="e#13#175#0" expanded="true" />
+            <element signature="e#13#133#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/config.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="43" column="8" lean-forward="false" selection-start-line="43" selection-start-column="8" selection-end-line="44" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>

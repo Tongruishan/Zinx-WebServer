@@ -14,6 +14,7 @@ type Globle struct {
 	MaxLen int
 	WorkerPoolSize uint32
 	MaxWorkerTaskLen uint32
+	MaxConn uint32
 }
 
 var GlobleConf *Globle
@@ -43,6 +44,7 @@ func init(){
 		MaxLen:4096,
 		WorkerPoolSize:10,
 		MaxWorkerTaskLen:4096,
+		MaxConn:1000,
 	}
 
 	GlobleConfInit.LoadConfig()

@@ -38,10 +38,31 @@ func(p *DongRouter)Handle(request ziface.IRequest){
 
 }
 
+func DoConnBeginn(conn ziface.IConnection){
+
+	fmt.Println("=====>DoConnBeginn")
+	err:=conn.Send(301,[]byte("This is DoConnBeginn,"))
+	if err!=nil{
+		fmt.Println("DoConnBeginn Send err ")
+	}
+
+}
+
+func DoConnStop(conn ziface.IConnection){
+	fmt.Println("=====>DoConnStop")
+	err:=conn.Send(302,[]byte("This is DoConnStop,"))
+	if err!=nil{
+		fmt.Println("DoConnBeginn Send err ")
+	}
+
+}
+
 
 func main(){
 	//创建服务器对象
 	s:=net.NewSever("Zinx V0.5")
+	s.AddOnConnStart(DoConnBeginn)
+	s.AddOnConnStop(DoConnStop)
 	//启动服务器
 	s.AddRouter(1,&PingRouter{})
 	s.AddRouter(2,&DongRouter{})

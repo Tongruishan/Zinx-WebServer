@@ -69,6 +69,7 @@ func(mh *MsgHandler)startOnePool(workId int,taskQueue chan ziface.IRequest){
 	for{
 		select {
 		case req:=<-taskQueue:
+			fmt.Println("taskQueue workId= ",workId,"has start!")
 			mh.DoMsgHandler(req)
 
 		}
@@ -85,6 +86,8 @@ func (mh *MsgHandler)StartWorkPool(){
 		mh.TaskQueue[i]=make(chan ziface.IRequest,config.GlobleConf.MaxWorkerTaskLen)
 		//等待消息被穿过来
 		go mh.startOnePool(i,mh.TaskQueue[i])
+
+		fmt.Println("")
 
 	}
 

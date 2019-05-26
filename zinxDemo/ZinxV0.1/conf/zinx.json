@@ -4,5 +4,6 @@
   "Port":8999,
   "MaxLen":4096,
   "WorkerPoolSize":10,
-  "MaxWorkerTaskLen":4096
+  "MaxWorkerTaskLen":4096,
+  "MaxConn":2
 }
