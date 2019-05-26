@@ -7,6 +7,7 @@ import (
 	//"ZinxHouse/Zinx-WebServer/zinx/config"
 	"io"
 	"errors"
+	"ZinxHouse/Zinx-WebServer/zinx/config"
 )
 
 //具体的TCP链接模块
@@ -87,7 +88,13 @@ func(c *Connection)StartReader(){
 		req:=NewRequest(c,data)
 
 		//传给回调函数，调用业务
-		go c.MsgHandler.DoMsgHandler(req)
+
+		if config.GlobleConf.WorkerPoolSize>0{
+			go c.MsgHandler.SendMsgToTaskSue(req)
+		}else {
+			go c.MsgHandler.DoMsgHandler(req)
+		}
+
 
 
 	}

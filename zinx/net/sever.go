@@ -34,6 +34,8 @@ func NewSever(name string) ziface.ISever {
 //对象方法
 //停止服务
 func(this *Sever)Start(){
+
+	this.MsgHandler.StartWorkPool()
 	//链接服务器
 	addr,err:=net.ResolveTCPAddr("tcp",fmt.Sprintf("%s:%d",this.Ip,this.Port))
 	if err!=nil{

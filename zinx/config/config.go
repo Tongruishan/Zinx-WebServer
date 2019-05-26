@@ -12,6 +12,8 @@ type Globle struct {
 	Port int
 	Version string
 	MaxLen int
+	WorkerPoolSize uint32
+	MaxWorkerTaskLen uint32
 }
 
 var GlobleConf *Globle
@@ -39,6 +41,8 @@ func init(){
 		Port:8999,
 		Version:"Zinx V0.4",
 		MaxLen:4096,
+		WorkerPoolSize:10,
+		MaxWorkerTaskLen:4096,
 	}
 
 	GlobleConfInit.LoadConfig()
