@@ -8,16 +8,12 @@ import (
 
 //存放路由的集合
 type MsgHandler struct {
+	//路由集合
 	APIS map[uint32]ziface.IRouter
-
-
 	//消息队列
 	TaskQueue []chan ziface.IRequest
-
 	//增加任务池数量
 	WorkPoolSize uint32
-
-
 }
 
 func NewMsgHandler()*MsgHandler{
@@ -33,18 +29,16 @@ func NewMsgHandler()*MsgHandler{
 //添加路由器到map中
 func (mh *MsgHandler)AddMsgRouter(msgId uint32,router ziface.IRouter){
 
-	//判断是否添是否有元素
+	//先判断当前消息Id是否有对应的Router
 	_,ok:=mh.APIS[msgId]
-
 	if ok{
 		fmt.Println("API msgId=",msgId)
 		return
 	}
-
-	//添加到map中
+	//将消息Id与Router 建立对应关系，并添加到map中
 	mh.APIS[msgId]=router
-
-	fmt.Println("Append Apis msgId=",msgId," successfull")
+	//
+	fmt.Println("Append Apis msgId=",msgId,"router=",router,"0l0 successfull")
 
 }
 //调度路由器

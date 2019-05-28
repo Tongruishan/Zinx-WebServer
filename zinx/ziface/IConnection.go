@@ -30,6 +30,11 @@ type IConnection interface {
 
 	//router
 	//Router IRouter
+	SetProperty(key string,value interface{})
+
+	GetProperty(key string)(interface{},error)
+
+	RemoveProperty(key string)
 
 }
 

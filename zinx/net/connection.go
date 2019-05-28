@@ -7,6 +7,7 @@ import (
 	"io"
 	"errors"
 	"ZinxHouse/Zinx-WebServer/zinx/config"
+	"sync"
 )
 
 //具体的TCP链接模块
@@ -25,6 +26,9 @@ type Connection struct {
 
 	msgChan chan []byte
 	wirterQuitChan chan bool
+
+	ConnProperty map[string]interface{}
+	ConnMutex sync.RWMutex
 }
 
 //初始化对象，相当于构造函数
@@ -38,6 +42,7 @@ func NewConnection(s ziface.ISever,conn *net.TCPConn,connId uint32,msgHandler zi
 		MsgHandler:msgHandler,
 		msgChan:make(chan []byte),
 		wirterQuitChan:make(chan bool),
+		ConnProperty:make(map[string]interface{}),
 
 	}
 
@@ -89,7 +94,7 @@ func(c *Connection)StartReader(){
 
 		fmt.Println("revied clinet msg: ConnId=",c.ConnID,"dataId=",data.MsgId,"datal=",string(data.GetMsgData() ))
 
-		//创建回复结构体
+		//创建qingqiu结构体 TODO 这个请求结构体有什么用
 		req:=NewRequest(c,data)
 
 		//传给回调函数，调用业务
@@ -212,5 +217,34 @@ func(c *Connection)Send(msgId uint32,msgData []byte)error{
 	c.msgChan<-datapack
 	//
 	return nil
+
+}
+
+func(c *Connection)SetProperty(key string,value interface{}){
+	c.ConnMutex.Lock()
+	defer c.ConnMutex.Unlock()
+
+	fmt.Println("SetProperty")
+	c.ConnProperty[key]=value
+}
+
+func(c *Connection)GetProperty(key string)(interface{},error){
+	c.ConnMutex.RLock()
+	defer c.ConnMutex.RUnlock()
+
+	value,ok:=c.ConnProperty[key]
+	if !ok{
+		fmt.Println("this property is not exit")
+		return nil,errors.New("this property is not exit")
+	}
+	return value,nil
+
+}
+
+func(c *Connection)RemoveProperty(key string){
+	c.ConnMutex.Lock()
+	defer c.ConnMutex.Unlock()
+
+	delete(c.ConnProperty,key)
 
 }
