@@ -1,0 +1,17 @@
+syntax="proto3";
+package pb ;
+
+message Person{
+    string name=1;
+    int32 age=2;
+    repeated string Emails=3;
+    repeated PhoneNumber Phones =4;
+    oneof Data{
+        string school=5;
+        string score=6;
+    }
+}
+
+message PhoneNumber{
+    string Number=1;
+}

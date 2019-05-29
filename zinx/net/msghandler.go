@@ -81,7 +81,7 @@ func (mh *MsgHandler)StartWorkPool(){
 		//等待消息被穿过来
 		go mh.startOnePool(i,mh.TaskQueue[i])
 
-		fmt.Println("")
+		fmt.Println("Work pool Id =",i,"is working......")
 
 	}
 

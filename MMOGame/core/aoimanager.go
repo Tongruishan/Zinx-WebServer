@@ -139,10 +139,10 @@ func(am *AOIManager)GetSurandGidssByGid(gid int)(gids []*Grip){
 //通过坐标获取所在方格id
 func(am *AOIManager)GetGidByPos(x,y float64)int{
 
-	if x<0||int(x)>am.ContX{
+	if x<0||int(x)>am.MAXX{
 		return -1
 	}
-	if y<0||int(y)>am.Conty{
+	if y<0||int(y)>am.MAXY{
 		return -1
 	}
 
@@ -174,9 +174,13 @@ func(am *AOIManager)GetPidsByPos(x,y float64)(pids []int){
 //通过坐标，将玩家添加到方格
 func(am *AOIManager)AddGripByPos(pid int,x,y float64){
 
+
+
 	gid:=am.GetGidByPos(x,y)
 
 	grid:=am.grips[gid]
+
+	fmt.Println(x,y,gid, grid)
 
 	grid.Add(pid,nil)
 

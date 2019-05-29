@@ -32,6 +32,7 @@ func NewGrip(gripId int,minx int,maxx int,miny int,maxy int)*Grip{
 
 //玩家进入格子
 func(g *Grip)Add(playerId int,player interface{}){
+
 	g.PlayerIdLock.Lock()
 	defer g.PlayerIdLock.Unlock()
 
